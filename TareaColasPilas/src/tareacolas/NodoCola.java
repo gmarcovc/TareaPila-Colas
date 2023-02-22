@@ -1,13 +1,14 @@
 package tareacolas;
 
 public class NodoCola {
-private Persona dato;
-private NodoCola atras;
+    private Persona dato;
+    private NodoCola atras;
     
-public NodoCola(Persona dato) {
-this.dato = dato;
-this.atras = null;
-}
+    public NodoCola(Persona dato){
+        this.dato=dato;
+        this.atras=null;
+        
+    }
 
     public Persona getDato() {
         return dato;
@@ -23,7 +24,6 @@ this.atras = null;
 
     public void setAtras(NodoCola atras) {
         this.atras = atras;
-    }
-
+    } 
 
 }

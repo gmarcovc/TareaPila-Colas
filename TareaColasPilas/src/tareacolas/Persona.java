@@ -2,38 +2,29 @@ package tareacolas;
 
 public class Persona {
     
-    private int cedula;
-    private String nombre;
+    
+    private String nombreCliente;
+    private int cedCliente;
     private boolean discapacidad;
 
-    public Persona(int cedula, String nombre, boolean discapacidad) {
-        this.cedula = cedula;
-        this.nombre = nombre;
+    public Persona(String nombreCliente, int cedCliente, boolean discapacidad) {
+        this.nombreCliente = nombreCliente;
+        this.cedCliente = cedCliente;
         this.discapacidad = discapacidad;
     }
 
-    public int getCedula() {
-        return cedula;
+    public String getNombreCliente() {
+        return nombreCliente;
     }
 
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public int getCedCliente() {
+        return cedCliente;
     }
 
     public boolean isDiscapacidad() {
         return discapacidad;
     }
-
-    public void setDiscapacidad(boolean discapacidad) {
-        this.discapacidad = discapacidad;
-    }
+    
+    
  
 }

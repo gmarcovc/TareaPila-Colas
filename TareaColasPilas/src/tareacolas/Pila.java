@@ -1,37 +1,38 @@
 package tareacolas;
 
 public class Pila {
-
+        
     private NodoPila cima;
     private int largo;
+    private int totalCubiertos;
 
     public Pila() {
         this.cima = null;
         this.largo = 0;
     }
-
-    public boolean Vacia() {
-        return cima == null;
-    }
-
-    public int tamanio() {
-        return this.largo;
-    }
-
-    public void push(int valor) {
-        NodoPila newNode = new NodoPila();
-        newNode.setValor(valor);
-
-        if (this.Vacia()) {
-            this.cima = newNode;
-        } else {
-            newNode.setSiguiente(this.cima);
-            this.cima = newNode;
+    
+    public boolean Vacia(){ return cima == null;}
+    
+    public int tamanio(){ return this.largo;}
+    
+    public void push(Platos valor){
+        NodoPila newNodo = new NodoPila();
+        newNodo.setValor(valor);
+        //poner lo de cubiertos
+        if (this.Vacia()){
+            this.cima = newNodo;
+            totalCubiertos+=valor.getCubiertos();
+            
+        }
+        else{
+            
+            newNodo.setSiguiente(this.cima);
+            this.cima = newNodo;
         }
         this.largo++;
     }
-
-    public void pop() {
+    
+    public void pop(){
         if (!Vacia()) {
             // Asigna como primer node al siguiente de la pila.
             this.cima = this.cima.getSiguiente();
@@ -39,8 +40,8 @@ public class Pila {
             this.largo--;
         }
     }
-
-    public boolean search(int reference) {
+    
+    public boolean search(Platos reference) {
         // Crea una copia de la pila.
         NodoPila aux = cima;
         // Bandera para verificar si exist el elemento a search.
@@ -60,8 +61,8 @@ public class Pila {
         // Retorna el value de la bandera.
         return exist;
     }
-
-    public void popModificado(int reference) {
+    
+        public void popModificado(Platos reference){
         // Consulta si el value exist en la pila.
         if (search(reference)) {
             // Crea una pila auxiliar para guardar los valuees que se 
@@ -69,18 +70,19 @@ public class Pila {
             NodoPila cimapPilaAux = null;
             // Recoore la pila hasta llegar al node que tenga el value
             // igual que el de reference.
-            while (reference != cima.getValor()) {
+            while(reference != cima.getValor()){
                 // Crea un node temporal para agregarlos a la pila auxiliar.
                 NodoPila temp = new NodoPila();
                 // Ingresa el value al node temporal.
                 temp.setValor(cima.getValor());
                 // Consulta si la pila auxiliar no a sido inicializada.
-                if (cimapPilaAux == null) {
+                if(cimapPilaAux == null){
                     // Inicializa la pila auxiliar.
                     cimapPilaAux = temp;
-                } // Caso contrario si la pila auxiliar ya contiene elementos
+                }
+                // Caso contrario si la pila auxiliar ya contiene elementos
                 // los agrega al start.
-                else {
+                else{
                     temp.setSiguiente(cimapPilaAux);
                     cimapPilaAux = temp;
                 }
@@ -92,7 +94,7 @@ public class Pila {
             pop();
             // Regresa los valuees de la pila auxiliar a la pila original
             // mientras la pila auxiliar tenga elementos.
-            while (cimapPilaAux != null) {
+            while(cimapPilaAux != null){
                 // Utiliza el metodo push para regresar los elementos a 
                 // la pila original.
                 push(cimapPilaAux.getValor());
@@ -101,20 +103,20 @@ public class Pila {
             }
             // Libera la memoria utilizada por la pila auxiliar.
             cimapPilaAux = null;
-        } else {
+        }
+        else{
             System.out.println("El nodo indicado no existe");
         }
-    }
-
-    public void listar() {
+    } 
+        public void listar(){
         // Crea una copia de la pila.
         NodoPila aux = cima;
         // Recorre la pila hasta el ultimo node.
-        while (aux != null) {
-            System.out.println("|\t" + aux.getValor() + "\t|");
+        while(aux != null){
+            System.out.println("|\t" + aux.getValor().getNumPlato()+"\t|"+aux.getValor().getCubiertos() + "\t|");
             System.out.println("-----------------");
             aux = aux.getSiguiente();
         }
-
+        System.out.println("Total cubiertos: "+totalCubiertos);
     }
 }
