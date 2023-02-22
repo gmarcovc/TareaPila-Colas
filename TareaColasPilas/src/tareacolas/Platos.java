@@ -1,19 +1,21 @@
 package tareacolas;
 
 public class Platos {
-    //cubiertos siempre tienen que estar en la cima
+    
+    private String numPlato;
     private int cubiertos;
 
-    public Platos(int cubiertos) {
+    public Platos(String numPlato, int cubiertos) {
+        this.numPlato = numPlato;
         this.cubiertos = cubiertos;
+    }
+
+    public String getNumPlato() {
+        return numPlato;
     }
 
     public int getCubiertos() {
         return cubiertos;
-    }
-
-    public void setCubiertos(int cubiertos) {
-        this.cubiertos = cubiertos;
     }
     
 }

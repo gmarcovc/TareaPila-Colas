@@ -1,19 +1,31 @@
 package tareacolas;
 
 public class NodoPila {
-    private int valor;
+    private Platos valor;
     private NodoPila siguiente;
+    private Platos dato;
     
+    //constructor para inicializar
+
     public NodoPila() {
-        this.valor = 0;
+        this.valor = null;
         this.siguiente = null;
+        this.dato = dato;
     }
 
-    public int getValor() {
+    public Platos getDato() {
+        return dato;
+    }
+
+    public void setDato(Platos dato) {
+        this.dato = dato;
+    }
+    
+    public Platos getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(Platos valor) {
         this.valor = valor;
     }
 
@@ -24,5 +36,6 @@ public class NodoPila {
     public void setSiguiente(NodoPila siguiente) {
         this.siguiente = siguiente;
     }
+
     
 }
